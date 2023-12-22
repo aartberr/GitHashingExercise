@@ -1,0 +1,19 @@
+#hash_script
+while true; do
+    # Get 4-digit integer input
+    read -p "Enter a 4-digit integer: " input
+
+    # Check if the input is a 4-digit integer
+    if [[ $input =~ ^[0-9]{4}$ ]]; then
+        # Hash the input using SHA-256 and save the result in a variable
+        hashed_result=$(echo -n "$input" | sha256sum)
+
+        # Save the hash result to hash.txt
+        echo "$hashed_result" > hash_output.txt
+        
+        # Exit the loop since valid input is provided
+        break
+    else
+        echo "Invalid input. Please enter a 4-digit integer."
+    fi
+done
